@@ -1,6 +1,7 @@
 package com.arthur;
 
 import org.junit.Test;
+import sun.misc.BASE64Decoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.NoSuchPaddingException;
@@ -98,7 +99,8 @@ public class RSA {
 
     @Test
     public void testRSA1() throws Exception {
-        initRSAKeyPair(pk1.getBytes("UTF-8"), sk1.getBytes("UTF-8"));
+        BASE64Decoder decoder = new BASE64Decoder();
+        initRSAKeyPair(decoder.decodeBuffer(pk1), decoder.decodeBuffer(sk1));
         showData();
     }
 
