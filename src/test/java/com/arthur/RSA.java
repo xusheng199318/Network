@@ -102,12 +102,17 @@ public class RSA {
     @Test
     public void testjie() throws Exception {
         BASE64Decoder decoder = new BASE64Decoder();
-        initRSAKeyPair(decoder.decodeBuffer(sk1));
-
-        String miwen = "IdsvDb9cz3R1c3qy/G3m3Wb+Xq3bn++PANJpi13Yg0aPM8mWhWx4VvpxbezGtrZEF5y04UGssXu3mS+njZXfPiJZl7D4xc/Yg/M0hYKCCe3B4XJAsPk/GUQdryOYmQr+FE0Pt/g6X5v37qXNskOvmLsLGACW0b3QHmlXXorvcKf3q60N84K+/IgC7BvGOUD0ezfoj134chZPrZ4WzLjsrNDeXNMpzl2dArXAwLkCPg7gw5fJ2C+lf0wxvY9MR7KDAnm5PHDP7e4sxMh+CGirUUEHym9iGMLyBnDbDt0qyUFnGibRyRfAzaxRoc1dk1BHNrA643AdPCfY8G8ZJNxLTw==";
+        initRSAKeyPair(decoder.decodeBuffer(pk1), decoder.decodeBuffer(sk1));
+        String miwen = "MftWwP6+v6IcrQQyYTJPW9zXloeuA94JP9DS1GL4Rryus+T6tTV0PZKtXYhwNf+5PGHJn7l8SQDjhImpCPO0PAV3YXDPEtO9EyAmcVGTHWLVZNDfPoa3MLfKBC2DR4DQdeOpqGzFlM1PLKBds5tsnxL1lsDlUwS7TeyIGz0fb65SE0miabMO2b0b1BtAMD4JBlM+5AEsjv5guMAFlIcl535YE/lSV9suNHfPo2ap7rjk41BM9Ln5BGZiCe86CrTNWzLqwHSKbRGOFxmO0K8L+KgCGpiVW0qRlmYy/jbuE0VH26vFmY2fnJ+kI54T9er7en24mOAQ4aVMBlmCfgZeYQ==";
+//        String miwen = "IdsvDb9cz3R1c3qy/G3m3Wb+Xq3bn++PANJpi13Yg0aPM8mWhWx4VvpxbezGtrZEF5y04UGssXu3mS+njZXfPiJZl7D4xc/Yg/M0hYKCCe3B4XJAsPk/GUQdryOYmQr+FE0Pt/g6X5v37qXNskOvmLsLGACW0b3QHmlXXorvcKf3q60N84K+/IgC7BvGOUD0ezfoj134chZPrZ4WzLjsrNDeXNMpzl2dArXAwLkCPg7gw5fJ2C+lf0wxvY9MR7KDAnm5PHDP7e4sxMh+CGirUUEHym9iGMLyBnDbDt0qyUFnGibRyRfAzaxRoc1dk1BHNrA643AdPCfY8G8ZJNxLTw==";
 //        String miwen = "9H/Ww+budI32L6qaxx1lO77UgOQcHikAZWiwYlCkPx0APUndCJk+2qvk19uR1VGKlkO30geBRzbyCFE/wSXakBz7S1HsnVGhmCeLa3QDbi2Im36UoyK3eWv84jzecWZwi7lsd+8G49JiA7NYyr3jf5jET8rKsrAMenpxD4ioep39pz+PsQ4TZHQuom7gITrMJmbzU5jFa/sUQlLwoOezwMAWdtC6jW0i/Gw9rP/xq7+plAJ/JYrWZZxd5l7AaK93J5ktPeATy3o4W3nznYvMaIKxKkx+drL7KJuX5K8/jGLDONBjwJcvzo7PGf0K8/aapuMjnqGwwOSDE46TEXAlGg==";
         byte[] decrypt1 = this.decrypt(Base64.getDecoder().decode(miwen));
         System.out.println("明文：" + new String(decrypt1, "UTF-8"));
+
+        byte[] encrypt = this.encrypt("{\"ceshi123\":\"今天天气怎么样456\"}".getBytes(StandardCharsets.UTF_8));
+        System.out.println("密文:"+ new String(Base64.getEncoder().encode(encrypt), "UTF-8"));
+
+
     }
 
     @Test
